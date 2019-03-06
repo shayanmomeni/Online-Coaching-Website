@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Virtual Coaching</title>
+
+  <meta charset="utf-8">
+
+  <script type="text/javascript" src="jQuery/jquery.min.js"></script>
+
+  <script src="jQuery/jquery-ui/jquery-ui.js"></script>
+
+  <link href="jQuery/jquery-ui/jquery-ui.css" rel="stylesheet">
+
+  <style type="text/css">
+    body {
+
+      margin: 0;
+      padding: 0;
+      background-color: black;
+    }
+
+    #top-bar {
+
+      width: 1440px;
+      margin: 0 auto;
+      background-color: #000000;
+      height: 60px;
+      float: left;
+    }
+
+    #logo {
+
+      margin: 10px 15px 12px 25px;
+      width: 180px;
+      height: 40px;
+      float: left;
+    }
+
+    .topbar-section {
+
+      float: left;
+      border-left: 1px grey solid;
+      height: 100%;
+      margin-right: 8px;
+    }
+
+    #loginimg {
+
+      width: 23px;
+      margin: 12px 10px 20px 10px;
+      float: left;
+
+    }
+
+    #login-font {
+
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      color: #D8D8D8;
+      font-weight: bold;
+      font-size: 90%;
+      position: relative;
+      top: 17px;
+      padding-right: 20px;
+
+    }
+
+    #topbar-font {
+
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      color: #D8D8D8;
+      font-weight: bold;
+      font-size: 90%;
+      position: relative;
+      top: 17px;
+      padding-right: 20px;
+      padding-left: 10px;
+
+    }
+
+    #search {
+
+      background-color: rgb(219, 58, 52);
+      font-weight: bold;
+      margin: 17px 0px 40px 10px;
+      float: left;
+      border: none;
+      padding: 5px;
+      color: white;
+      font-weight: bold;
+      font-size: 100%;
+
+    }
+
+    #searchimg {
+
+      margin-top: 18px;
+      height: 24px;
+      float: left;
+    }
+
+    .clear-div {
+
+      clear: both;
+
+    }
+
+    #second-bar {
+
+      width: 100%;
+      background-color: rgb(219, 58, 52);
+      height: 45px;
+      float: left;
+
+    }
+
+    h1 {
+      font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      padding: 0;
+      margin: 0;
+      font-weight: bold;
+      margin-top: 0px;
+      margin-left: 15px;
+    }
+
+    ::placeholder {
+      color: black;
+    }
+
+    #first-body {
+      position: relative;
+      top: 10;
+
+    }
+
+
+    * {
+      box-sizing: border-box
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+    }
+
+    /* Hide the images by default */
+    .mySlides {
+      display: none;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 45%;
+      width: auto;
+      margin-top: -22px;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 35px;
+      transition: 0.6s ease;
+      border-radius: 0 4px 4px 0;
+
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+
+    /* The dots/bullets/indicators */
+    .dot {
+      cursor: pointer;
+      height: 20px;
+      width: 20px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+      position: relative;
+      top: -60px;
+    }
+
+
+    .active,
+    .dot:hover {
+      background-color: #424242;
+    }
+
+
+
+
+    .startButton {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      background-color: rgb(219, 58, 52);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+
+
+    }
+
+    .mySlides .startButton:hover {
+
+      background-color: black;
+    }
+
+    #firstSliderText {
+      display: none;
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      font-weight: bold;
+      border: solid white 3px;
+      border-radius: 5px;
+      font-size: 145%;
+      color: white;
+      padding: 10px;
+
+
+    }
+
+    #firstSliderText1 {
+      display: none;
+      position: absolute;
+      top: 30%;
+      left: 10%;
+      font-weight: bold;
+      font-size: 100%;
+      color: white;
+      padding: 10px;
+      font-size: 250%;
+
+    }
+
+    .startButton2 {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 67%;
+      background-color: rgb(219, 58, 52);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+
+
+    }
+
+    .mySlides .startButton2:hover {
+
+      background-color: black;
+    }
+
+    #secondSliderText {
+      display: none;
+      position: absolute;
+      top: 20%;
+      left: 67%;
+      font-weight: bold;
+      border: solid white 3px;
+      border-radius: 5px;
+      font-size: 145%;
+      color: white;
+      padding: 10px;
+
+    }
+
+    #secondSliderText1 {
+      display: none;
+      position: absolute;
+      top: 30%;
+      left: 67%;
+      font-weight: bold;
+      font-size: 100%;
+      color: white;
+      padding: 10px;
+      font-size: 250%;
+
+    }
+
+    .startButton3 {
+      display: none;
+      position: absolute;
+      top: 74%;
+      left: 10%;
+      background-color: rgb(219, 58, 52);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+
+
+    }
+
+    .mySlides .startButton3:hover {
+
+      background-color: black;
+    }
+
+    #thirdSliderText {
+      display: none;
+      position: absolute;
+      top: 35%;
+      left: 10%;
+      font-weight: bold;
+      border: solid white 3px;
+      border-radius: 5px;
+      font-size: 140%;
+      color: white;
+      padding: 10px;
+
+    }
+
+    #thirdSliderText1 {
+      display: none;
+      position: absolute;
+      top: 45%;
+      left: 8%;
+      font-weight: bold;
+      font-size: 200%;
+      color: white;
+
+
+    }
+
+    .body2 {
+
+      width: 50%;
+      height: 463px;
+      background-color: rgb(242, 50, 50);
+      margin-top: -46px;
+      float: left;
+
+
+    }
+
+    .body2part2 {
+      width: 50%;
+      height: 463px;
+      background-color: rgb(242, 50, 50);
+      margin-top: -46px;
+      float: left;
+
+
+    }
+
+    #imgWoman {
+
+      position: relative;
+      top: 40px;
+      border-left: 1px white solid;
+
+    }
+
+    #imgMan {
+
+      position: relative;
+      left: 71.5%;
+      top: 35px;
+
+    }
+
+    #menPart {
+      width: 400px;
+      height: 40px;
+      color: white;
+      font-size: 130%;
+      position: relative;
+      top: -320px;
+      margin-left: 30px;
+    }
+
+    #menPart1 {
+
+      position: relative;
+      left: 65%;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      font-size: 320%;
+      font-weight: bold;
+    }
+
+    .startButtonBody2MenPart {
+      position: relative;
+      left: 69%;
+      top: 60px;
+      background-color: white;
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      transition: all 1.5s ease;
+
+    }
+
+    .body2 .startButtonBody2MenPart:hover {
+      color: white;
+      background-color: black;
+    }
+
+    #wemennPart {
+
+      width: 50%;
+      height: 40px;
+      color: white;
+      position: relative;
+      left: 33%;
+      top: -325px;
+      font-size: 130%;
+    }
+
+    #womenPart1 {
+
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      font-size: 303%;
+      font-weight: bold;
+
+
+    }
+
+    .startButtonBody2WomenPart {
+      position: relative;
+      left: 68%;
+      top: 28px;
+      background-color: white;
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      transition: all 1s ease;
+
+    }
+
+    .body2part2 .startButtonBody2WomenPart:hover {
+      color: white;
+      background-color: black;
+    }
+
+    .thirdBody {
+      width: auto;
+      height: 800px;
+
+
+    }
+
+
+    #imgThirdBody {
+
+      width: 100%;
+      height: 800px;
+      float: left;
+
+
+    }
+
+    #body3header {
+
+      width: 500px;
+      height: auto;
+      color: white;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      font-weight: bold;
+      font-size: 250%;
+      position: relative;
+      top: -790px;
+      left: 35%;
+
+
+    }
+
+    #body3headerInformation {
+
+      width: 1100px;
+      height: auto;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      font-weight: bold;
+      font-size: 47%;
+      position: relative;
+      top: -20px;
+      left: -60%;
+      color: white;
+
+    }
+
+
+    #thirdBodyFirstImg {
+
+      position: relative;
+      left: 110px;
+      top: 30px;
+
+
+    }
+
+    #thirdBodySecondImg {
+
+      position: relative;
+      left: 190px;
+      top: 30px;
+
+
+    }
+
+    #thirdBodyThirdImg {
+
+      position: relative;
+      left: -41px;
+      top: 210px;
+
+
+    }
+
+    #thirdBodyFourthImg {
+
+      position: relative;
+      left: 40px;
+      top: 210px;
+
+
+    }
+
+    #thirdBodyFifthImg {
+
+      position: relative;
+      left: -193px;
+      top: 400px;
+
+
+    }
+
+    #thirdBodySixthImg {
+
+      position: relative;
+      left: -109px;
+      top: 400px;
+
+    }
+
+    #imgBodyAnalyzeHeaderText {
+
+      font-size: 40%;
+      position: relative;
+      top: -57px;
+      left: -7px;
+    }
+
+    #imgTeachingWorkoutText {
+
+      font-size: 40%;
+      position: relative;
+      top: -90px;
+      left: 340px;
+
+    }
+
+    #imgHealthExaminationText {
+
+      font-size: 40%;
+      position: relative;
+      top: 55px;
+      left: -50px;
+    }
+
+    #imgNutritionPlaningTeaxt {
+
+      font-size: 40%;
+      position: relative;
+      left: 345px;
+      top: 22px;
+
+    }
+
+    #imgWorkoutPlanningText {
+
+      font-size: 40%;
+      position: relative;
+      left: -42px;
+      top: 175px;
+    }
+
+    #imgCalculateSupplementText {
+
+      font-size: 40%;
+      position: relative;
+      left: 351px;
+      top: 145px;
+    }
+
+
+    /* Youtube part main page*/
+
+    #youtubePartImg {
+
+      float: left;
+
+    }
+
+    #youtubeHeadertext {
+
+      color: white;
+      font-size: 190%;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      position: absolute;
+      top: 2040px;
+      left: 100px;
+    }
+
+    #youtubeText {
+
+      color: white;
+      font-size: 250%;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      width: 800px;
+      position: absolute;
+      left: 90px;
+      top: 2100px;
+
+
+    }
+
+    .startButtonYoutube {
+
+      position: absolute;
+      left: 100px;
+      top: 2250px;
+      background-color: white;
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      transition: all 1.5s ease;
+
+    }
+
+    .startButtonYoutube:hover {
+
+      background-color: black;
+      color: white;
+      box-shadow: inset 0 0 0 2px white;
+
+    }
+
+
+
+
+    /* coach section // hover a text over on coach image // coach two */
+
+    .coachSection {
+
+      height: 580px;
+      width: 100%;
+      background-color: #242424;
+      float: left;
+    }
+
+    #headerCoachSection {
+
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      color: white;
+      margin-left: 25px;
+      font-size: 130%;
+
+    }
+
+
+    .coachSectionCoachImg1 {
+
+      width: 300px;
+      height: 300px;
+      margin-left: 140px;
+      margin-top: 85px;
+      display: inline-block;
+      position: relative;
+
+
+    }
+
+    .coachSectionCoachImg1 img {
+
+      width: 300px;
+      height: 300px;
+      border-radius: 2px;
+      transition: .5s;
+
+    }
+
+    .coachSectionCoachImg1:hover img {
+
+      filter: blur(2px) brightness(60%);
+
+    }
+
+    .coachSectionCoachImg1 :not(img) {
+
+      position: absolute;
+      top: -5%;
+      padding: 10px;
+      z-index: 1;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      color: white;
+      font-weight: bold;
+      opacity: 0;
+      transition: .3s;
+      width: 100%;
+
+    }
+
+
+    .coachSectionCoachImg1:hover :not(img) {
+
+      opacity: 1;
+
+    }
+
+    .coachSectionCoachImg1 h5 {
+
+      position: absolute;
+      top: 20px;
+      color: white;
+      font-size: 90%;
+    }
+
+    .coachSectionCoachImg1 button {
+
+      border: 1px sold white;
+      position: absolute;
+      top: 200px;
+      width: 100px;
+      background-color: #242424;
+      padding: 5px;
+      font-size: 90%;
+      margin-left: 10px;
+    }
+
+
+
+
+    /*coach section // hover a text over on coach image // coach two */
+
+
+    .coachSectionCoachImg2 {
+
+      width: 300px;
+      height: 300px;
+      margin-left: 140px;
+      margin-top: 85px;
+      display: inline-block;
+      position: relative;
+
+
+    }
+
+    .coachSectionCoachImg2 img {
+
+      width: 300px;
+      height: 300px;
+      border-radius: 2px;
+      transition: .5s;
+
+    }
+
+    .coachSectionCoachImg2:hover img {
+
+      filter: blur(2px) brightness(60%);
+
+    }
+
+    .coachSectionCoachImg2 :not(img) {
+
+      position: absolute;
+      top: -5%;
+      padding: 10px;
+      z-index: 1;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      color: white;
+      font-weight: bold;
+      opacity: 0;
+      transition: .3s;
+      width: 100%;
+
+    }
+
+
+    .coachSectionCoachImg2:hover :not(img) {
+
+      opacity: 1;
+
+    }
+
+    .coachSectionCoachImg2 h5 {
+
+      position: absolute;
+      top: 20px;
+      color: white;
+      font-size: 90%;
+    }
+
+    .coachSectionCoachImg2 button {
+
+      border: 1px sold white;
+      position: absolute;
+      top: 200px;
+      width: 100px;
+      background-color: #242424;
+      padding: 5px;
+      font-size: 90%;
+      margin-left: 10px;
+    }
+
+
+    /*coach section // hover a text over on coach image // coach three */
+
+
+    .coachSectionCoachImg3 {
+
+      width: 300px;
+      height: 300px;
+      margin-left: 140px;
+      margin-top: 85px;
+      display: inline-block;
+      position: relative;
+
+
+    }
+
+    .coachSectionCoachImg3 img {
+
+      width: 300px;
+      height: 300px;
+      border-radius: 2px;
+      transition: .5s;
+
+    }
+
+    .coachSectionCoachImg3:hover img {
+
+      filter: blur(2px) brightness(60%);
+
+    }
+
+    .coachSectionCoachImg3 :not(img) {
+
+      position: absolute;
+      top: -5%;
+      padding: 10px;
+      z-index: 1;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      color: white;
+      font-weight: bold;
+      opacity: 0;
+      transition: .3s;
+      width: 100%;
+
+    }
+
+
+    .coachSectionCoachImg3:hover :not(img) {
+
+      opacity: 1;
+
+    }
+
+    .coachSectionCoachImg3 h5 {
+
+      position: absolute;
+      top: 20px;
+      color: white;
+      font-size: 90%;
+    }
+
+    .coachSectionCoachImg3 button {
+
+      border: 1px sold white;
+      position: absolute;
+      top: 200px;
+      width: 100px;
+      background-color: #242424;
+      padding: 5px;
+      font-size: 90%;
+      margin-left: 10px;
+    }
+
+
+    /* Program example Part // body 6*/
+
+    .programExample1 {
+
+      background-color: rgb(242, 50, 50);
+      width: 50%;
+      height: 650px;
+      float: left;
+
+    }
+
+    .programExample1 img {
+
+      width: 100%;
+      height: 450px;
+    }
+
+    .programExample1 h1 {
+
+      color: white;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      margin-left: 355px;
+    }
+
+    .programExample1 h3 {
+
+      color: white;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      margin-left: 260px;
+    }
+
+    .programExample1 button {
+
+      color: white;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      margin-left: 20px;
+      background-color: rgb(242, 50, 50);
+      height: 40px;
+      padding: 10px;
+      width: 100px;
+      font-size: 100%;
+      border: 2px solid white;
+      margin-top: 15px;
+      margin-left: 560px;
+    }
+
+    .programExample1 button:hover {
+
+      color: black;
+      border: 2px solid black;
+    }
+
+
+
+    .programExample2 {
+
+      background-color: rgb(242, 50, 50);
+      width: 50%;
+      height: 650px;
+      float: left;
+      border-left: black solid 1px;
+
+    }
+
+    .programExample2 img {
+
+      width: 100%;
+      height: 450px;
+
+    }
+
+    .programExample2 h1 {
+
+      color: white;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      margin-left: 55px;
+    }
+
+    .programExample2 h3 {
+
+      color: white;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      margin-left: 55px;
+
+    }
+
+    .programExample2 button {
+
+      color: white;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      margin-left: 20px;
+      background-color: rgb(242, 50, 50);
+      height: 40px;
+      padding: 10px;
+      width: 100px;
+      font-size: 100%;
+      border: 2px solid white;
+      margin-top: 15px;
+      margin-left: 55px;
+    }
+
+    .programExample2 button:hover {
+
+      color: black;
+      border: 2px solid black;
+    }
+
+    .circleAnimate {
+
+      width: 170px;
+      height: 170px;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 3220px;
+      left: 633px;
+    }
+
+    .circleAnimate span {
+
+      color: rgb(242, 50, 50);
+      width: 150px;
+      position: absolute;
+      font-size: 190%;
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      font-weight: bold;
+      height: 170px;
+      margin-top: 45px;
+      margin-left: 14px;
+    }
+
+    .circleAnimate:hover {
+
+      background-color: rgb(242, 50, 50);
+      color: rgb(242, 50, 50);
+      transition: 1.3s;
+    }
+
+    .circleAnimate:hover span {
+      color: white;
+      transition: 1.3s;
+    }
+
+
+    /* Footer*/
+
+    .footer {
+
+      width: 100%;
+      height: 240px;
+      background-color: #1B1B1B;
+    }
+
+    .footer span {
+
+      font-family: Arial, Helvetica, freesans, sans-serif;
+      color: rgb(242, 50, 50);
+      font-size: 130%;
+      position: absolute;
+      margin-left: 40px;
+      margin-top: 40px;
+      font-weight: bold;
+
+    }
+
+    #footerInfo {
+
+      color: white;
+      margin-top: 100px;
+      font-size: 120%;
+
+    }
+
+
+    #footerInfo1 {
+
+      color: white;
+      margin-top: 130px;
+      font-size: 120%;
+
+    }
+
+
+    #footerInfo2 {
+
+      color: white;
+      margin-top: 160px;
+      font-size: 120%;
+
+    }
+
+    /* Return to top bar */
+
+    .returnTopBar {
+
+      width: 100%;
+      height: 50px;
+      background-color: #1B1B1B;
+      border-top: 1px solid gray;
+      color: white;
+    }
+
+    .returnTopBar:hover {
+
+      background-color: rgb(242, 50, 50);
+
+    }
+
+    #returnTopBarSimbol {
+
+      position: absolute;
+      margin-left: 50%;
+      font-weight: bold;
+      font-size: 250%;
+    }
+
+    .returnTopBar a {
+
+      text-decoration: none;
+      color: white;
+
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+  <div id="top-bar">
+    <img #top id="logo" src="images/vc5.png">
+
+
+    <div class="topbar-section">
+
+      <span id="topbar-font">Virtual Coach</span>
+    </div>
+
+    <div class="topbar-section">
+      <span id="topbar-font">Coaches</span>
+    </div>
+
+    <div class="topbar-section">
+      <span id="topbar-font">Videos</span>
+    </div>
+
+    <div class="topbar-section">
+      <span id="topbar-font">Articles</span>
+    </div>
+
+    <div class="topbar-section">
+      <span id="topbar-font">Questions</span>
+    </div>
+
+    <div class="topbar-section">
+      <span id="topbar-font">Shop</span>
+    </div>
+
+    <div class="topbar-section">
+      <span id="topbar-font">Diet Shop</span>
+    </div>
+
+    <div class="topbar-section">
+      <img id=loginimg src="images/login.png.png">
+      <span id="login-font">Members Tracking</span>
+    </div>
+
+    <form class="topbar-section">
+      <input id="search" type="text" placeholder="Search...">
+      <input type="image" id="searchimg" src="images/search2.PNG">
+    </form>
+
+  </div>
+  <div class="clear-div"></div>
+  <div id="second-bar">
+    <h1>Virtual Coach</h1>
+
+  </div>
+
+  <div class="clear-div"></div>
+
+  <!-- slider part -->
+  <div class="mySlides ">
+
+    <img id="img1" src="images/yasin.jpg" style="width:100%" height="600px">
+    <button class="startButton">Start Now!</button>
+    <div id="firstSliderText">Virtual Coach best way to achive goals</div>
+    <div id="firstSliderText1">Follow your dream Now</div>
+
+
+  </div>
+
+  <div class="mySlides ">
+
+    <img src="images/yasin2.jpg" style="width:100%" height="600px">
+    <button class="startButton2">Start Now!</button>
+    <div id="secondSliderText">Virtual Coach,the best way to improve</div>
+    <div id="secondSliderText1">Let's start now with your coach</div>
+
+  </div>
+
+  <div class="mySlides ">
+
+    <img src="images/yasin3.jpg" style="width:100%" height="600px">
+    <button class="startButton3">Start Now!</button>
+    <div id="thirdSliderText">Virtual Coach, everywhere for everyone</div>
+    <div id="thirdSliderText1">Escape the geographical constraint</div>
+
+  </div>
+
+
+  <!-- Next and previous buttons -->
+  <div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+
+    <span class="dot" onclick="currentSlide(2)"></span>
+
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+
+
+
+
+  <div class="clear-div"></div>
+
+
+  <!-- body after sliders -->
+
+  <div class="body2">
+
+    <img id="imgMan" src="images/download1.png">
+
+    <div id="menPart">
+      <h1 id="menPart1">Men</h1>
+
+      <p>All sizes and information that are available for organ analysis,
+        whether for women or men, will be reserved and safe.</p>
+
+      <button class="startButtonBody2MenPart">Start Now</button>
+
+
+    </div>
+  </div>
+
+
+  <div class="body2part2">
+
+    <img id="imgWoman" src="images/download.png">
+    <div id="wemennPart">
+      <h1 id="womenPart1">Women</h1>
+
+      <p>There is no compulsion to send a picture or look for a face-to-face analysis, and only by calculating your body's size ratios with the necessary scientific information
+        will be achieved.</p>
+
+      <button class="startButtonBody2WomenPart">Start Now</button>
+
+    </div>
+  </div>
+
+
+  <div class="clear-div"></div>
+
+
+  <!-- third part of body -->
+
+  <div class="thirdBody">
+
+    <img id="imgThirdBody" src="images/dumbel.jpg">
+
+    <div id="body3header">
+
+      <p>Virtual Coach Services</p>
+
+      <p id="body3headerInformation">We will provide everything you need as Analysing,Workout Planning,Diet and Supplement Calculating and Planning</p>
+
+
+      <img id="thirdBodyFirstImg" src="images/icon1-1.png" width="65px" height="65px">
+
+      <img id="thirdBodySecondImg" src="images/icon2-2.png" width="65px" height="65px">
+
+      <img id="thirdBodyThirdImg" src="images/icon3-3.png" width="65px" height="65px">
+
+      <img id="thirdBodyFourthImg" src="images/icon4-4.png" width="65px" height="65px">
+
+      <img id="thirdBodyFifthImg" src="images/icon5-5.png" width="65px" height="65px">
+
+      <img id="thirdBodySixthImg" src="images/icon6-6.png" width="65px" height="65px">
+
+      <p id="imgBodyAnalyzeHeaderText">Body Analyze</p>
+
+      <P id="imgTeachingWorkoutText">Teaching Workout</P>
+
+      <p id="imgHealthExaminationText">Health Examination</p>
+
+      <p id="imgNutritionPlaningTeaxt">Nutrition Planning</p>
+
+      <p id="imgWorkoutPlanningText">Workout Planning</p>
+
+      <p id="imgCalculateSupplementText">Calculate Supplements</p>
+
+    </div>
+  </div>
+
+
+  <div class="clear-div"></div>
+
+  <!--  body 4 //youtube part  -->
+
+  <div class="youtubePart">
+    <img id="youtubePartImg" src="images/back1.png" width="100%" height="500px">
+  </div>
+  <div>
+    <span id="youtubeHeadertext">Training videos</span>
+
+    <span id="youtubeText">You can follow our channel on Youtube </span>
+
+    <button class=startButtonYoutube>Start Now</button>
+
+  </div>
+
+  <div class="clear-div"></div>
+
+
+  <!-- body 5///Coach part -->
+
+  <div class="coachSection">
+
+    <p id="headerCoachSection">
+      The coaches of this group are all with a high level of knowledge and experience ready to help you reach the ideal body
+    </p>
+
+
+    <div class="coachSectionCoachImg1">
+
+      <img src="images/yasin1.jpg">
+
+      <h3>Yasin Hossein Pour</h3>
+
+      <h5>2 times physique champion ....</h5>
+
+      <button>Start Now</button>
+
+    </div>
+
+
+    <div class="coachSectionCoachImg2">
+
+      <img src="images/yasin3.jpg">
+
+      <h3>Yasin Hossein Pour</h3>
+
+      <h5>2 times physique champion ....</h5>
+
+      <button>Start Now</button>
+
+    </div>
+
+
+    <div class="coachSectionCoachImg3">
+
+      <img src="images/yasin2.jpg">
+
+      <h3>Yasin Hossein Pour</h3>
+
+      <h5>2 times physique champion ....</h5>
+
+      <button>Start Now</button>
+
+    </div>
+
+  </div>
+
+
+  <div class="clear-div"></div>
+
+  <!-- body 6 of main page -->
+
+  <div class="programExample1">
+
+    <img src="images/propart1.jpg">
+
+    <h1>Power Test Example</h1>
+
+    <h3>This test help us to know your body situation</h3>
+
+    <button>Start Now</button>
+
+  </div>
+
+
+
+  <div class="programExample2">
+
+    <img src="images/propart2.jpg">
+
+    <h1>Workout Program Example</h1>
+
+    <h3>There is some examples of workout programs</h3>
+
+    <button>Start Now</button>
+
+  </div>
+
+  <div class="circleAnimate">
+
+    <span>Programs Examples</span>
+
+  </div>
+
+
+  <div class="clear-div"></div>
+
+
+  <!-- Footer -->
+
+  <div class="footer">
+
+    <span>Contact us</span>
+
+    <span id="footerInfo">Tel :01160990725</span>
+    <span id="footerInfo1">Cell Phone :01160990725</span>
+    <span id="footerInfo2">Email :Shayan_momeni@yahoo.com</span>
+
+  </div>
+
+  <div class="clear-div"></div>
+
+
+  <!--  Return to top bar -->
+
+  <div class="returnTopBar">
+
+    <a href="#top"> <span id="returnTopBarSimbol"> &#8963;</span></a>
+
+  </div>
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {
+        slideIndex = 1;
+      }
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+
+
+
+    var slideIndex = 0;
+    carousel();
+
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > x.length) {
+        slideIndex = 1;
+      }
+      x[slideIndex - 1].style.display = "block";
+      setTimeout(carousel, 6000); // Change image every 6 seconds
+    }
+
+
+
+
+    // first slide text and button appear and disappear
+
+    $(function() {
+      setInterval(function() {
+        $("#firstSliderText").show("fold", 2000).delay(4000).hide(1000).delay(1000).show("fold", 2000);
+
+      }, 1000);
+    });
+
+    $(function() {
+      setInterval(function() {
+        $("#firstSliderText1").fadeIn(3000).delay(3000).fadeOut(1000).delay(1000).fadeIn(3000);
+
+      }, 1000);
+    });
+
+    $(function() {
+      setInterval(function() {
+        $(".startButton").show("fold", 3000).delay(3000).hide(1000).delay(1000).show("fold", 3000);
+
+      }, 1000);
+    });
+
+
+    // second slide text and button appear and disappear
+
+
+    $(function() {
+      setInterval(function() {
+        $("#secondSliderText").show("fold", 1000).delay(4000).hide(1000).delay(1000).show("fold", 2000);
+
+      }, 100);
+    });
+
+    $(function() {
+      setInterval(function() {
+        $("#secondSliderText1").fadeIn(2000).delay(3000).fadeOut(1000).delay(1000).fadeIn(3000);
+
+      }, 100);
+    });
+
+    $(function() {
+      setInterval(function() {
+        $(".startButton2").show("fold", 2000).delay(3000).hide(1000).delay(1000).show("fold", 3000);
+
+      }, 100);
+    });
+
+    // third slide text and button appear and disapper
+
+    $(function() {
+      setInterval(function() {
+        $("#thirdSliderText").show("fold", 1000).delay(2500).hide(1000).delay(1000).show("fold", 2000);
+
+      }, 350);
+    });
+
+    $(function() {
+      setInterval(function() {
+        $("#thirdSliderText1").fadeIn(2000).delay(1500).fadeOut(1000).delay(1000).fadeIn(3000);
+
+      }, 350);
+    });
+
+    $(function() {
+      setInterval(function() {
+        $(".startButton3").show("fold", 1000).delay(2500).hide(1000).delay(1000).show("fold", 2000);
+
+      }, 350);
+    });
+  </script>
+
+
+
+</body>
+
+</html>
